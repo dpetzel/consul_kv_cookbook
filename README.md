@@ -67,13 +67,8 @@ This cookbook currently uses [test-kitchen](https://github.com/opscode/test-kitc
 along with [ChefSpec](https://docs.getchef.com/chefspec.html).
 
 Test Kitchen: `kitchen test`
+
 ChefSpec: `bundle exec rspec`
-
-
-
-**NOTE** A known limitation of using BATS is that the cookbook is not currently
-tested on Windows machines. See https://github.com/btm/minitest-handler-cookbook/issues/45
-for more of the background on this.
 
 ## Releasing
 This cookbook uses an 'even number' release strategy. The version number in master
@@ -90,3 +85,4 @@ Come release time here is the checklist:
 
 ## Authors
 - Author: David Petzel (<davidpetzel@gmail.com>)
+
