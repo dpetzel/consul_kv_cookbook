@@ -1,12 +1,9 @@
 # Consul Kv
-[![Coverage Status](https://coveralls.io/repos/dpetzel/consul_kv_cookbook/badge.png)](https://coveralls.io/r/dpetzel/consul_kv_cookbook)
-[![Build Status](https://api.shippable.com/projects/545ee930c6f0803064f3db48/badge?branchName=master)](https://app.shippable.com/projects/545ee930c6f0803064f3db48/builds/latest)
-
 This cookbook exposes the `consul_kv` LWRP which can be used to
 create/update/delete Key/Value entries in an idempotent manner.
 
 ## Requirements
-The cookbook has no direct dependencies, but it is assumed you are already
+The cookbook has no direct dependencies, but it is assumed you are already 
 have a working [Consul](https://consul.io/) installation.
 
 ## Usage
