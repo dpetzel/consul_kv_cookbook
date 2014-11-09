@@ -1,5 +1,4 @@
 # Consul Kv
-[![Coverage Status](https://coveralls.io/repos/dpetzel/consul_kv_cookbook/badge.png?branch=master)](https://coveralls.io/r/dpetzel/consul_kv_cookbook?branch=master)
 [![Build Status](https://api.shippable.com/projects/545ee930c6f0803064f3db48/badge?branchName=master)](https://app.shippable.com/projects/545ee930c6f0803064f3db48/builds/latest)
 
 This cookbook exposes the `consul_kv` LWRP which can be used to
