@@ -1,0 +1,7 @@
+name 'consul_kv'
+maintainer 'David Petzel'
+maintainer_email 'davidpetzel@gmail.com'
+license 'apache2'
+description 'Installs/Configures consul_kv'
+long_description 'Installs/Configures consul_kv'
+version '0.9.9'
