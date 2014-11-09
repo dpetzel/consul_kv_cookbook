@@ -5,7 +5,7 @@ This cookbook exposes the `consul_kv` LWRP which can be used to
 create/update/delete Key/Value entries in an idempotent manner.
 
 ## Requirements
-The cookbook has no direct dependencies, but it is assumed you are already 
+The cookbook has no direct dependencies, but it is assumed you are already
 have a working [Consul](https://consul.io/) installation.
 
 ## Usage
@@ -68,12 +68,6 @@ along with [ChefSpec](https://docs.getchef.com/chefspec.html).
 
 Test Kitchen: `kitchen test`
 ChefSpec: `bundle exec rspec`
-
-
-
-**NOTE** A known limitation of using BATS is that the cookbook is not currently
-tested on Windows machines. See https://github.com/btm/minitest-handler-cookbook/issues/45
-for more of the background on this.
 
 ## Releasing
 This cookbook uses an 'even number' release strategy. The version number in master
