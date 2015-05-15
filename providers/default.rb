@@ -21,6 +21,7 @@ action :create do
   unless @current_resource.current_value == new_resource.value
     ::Chef::Log.info('Creating Consul Key/Value '\
       "#{new_resource.path}:#{new_resource.value}")
+    tries = 3
     begin
       http = Net::HTTP.new(new_resource.uri.hostname, new_resource.uri.port)
       request = Net::HTTP::Put.new(new_resource.uri.path)
@@ -32,7 +33,12 @@ action :create do
       end
       new_resource.updated_by_last_action(response.body == 'true')
     rescue => exc
-      ::Chef::Log.error("Failed Creating Consul K/V: #{exc.message}")
+      tries -= 1
+      if tries > 0
+        retry
+      else
+        ::Chef::Log.error("Failed Creating Consul K/V: #{exc.message}")
+      end
     end
   end
 end
@@ -41,12 +47,18 @@ action :delete do
   if new_resource.exist?
     ::Chef::Log.info('Deleting Consul Key/Value '\
       "#{new_resource.path}:#{new_resource.value}")
+    tries = 3
     begin
       request = Net::HTTP::Delete.new(new_resource.uri.path)
       response = @http.request(request)
       new_resource.updated_by_last_action(response.class == Net::HTTPOK)
     rescue => exc
-      ::Chef::Log.error("Failed Deleting Consul K/V: #{exc.message}")
+      tries -= 1
+      if tries > 0
+        retry
+      else
+        ::Chef::Log.error("Failed Deleting Consul K/V: #{exc.message}")
+      end
     end
   end
 end
