@@ -51,6 +51,9 @@ The following attributes are supported by the LWRP:
     * **type** - String
     * **required** - false
     * **default** - 127.0.0.1:8500
+* `consul_acl` - The ACL token to access to Consul HTTP API.
+    * **type** - String
+    * **required** - false
 
 
 

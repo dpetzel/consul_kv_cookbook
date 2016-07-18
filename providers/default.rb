@@ -24,7 +24,8 @@ action :create do
     tries = 3
     begin
       http = Net::HTTP.new(new_resource.uri.hostname, new_resource.uri.port)
-      request = Net::HTTP::Put.new(new_resource.uri.path)
+      path = new_resource.consul_acl.nil? ? new_resource.uri.path : new_resource.uri.path + '?token=' + new_resource.consul_acl
+      request = Net::HTTP::Put.new(path)
       request.body = new_resource.value
       response = http.request(request)
 
@@ -49,7 +50,8 @@ action :delete do
       "#{new_resource.path}:#{new_resource.value}")
     tries = 3
     begin
-      request = Net::HTTP::Delete.new(new_resource.uri.path)
+      path = new_resource.consul_acl.nil? ? new_resource.uri.path : new_resource.uri.path + '?token=' + new_resource.consul_acl
+      request = Net::HTTP::Delete.new(path)
       response = @http.request(request)
       new_resource.updated_by_last_action(response.class == Net::HTTPOK)
     rescue => exc
