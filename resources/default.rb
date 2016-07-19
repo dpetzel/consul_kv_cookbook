@@ -29,7 +29,7 @@ attribute :value, kind_of: String, default: nil
 attribute :consul_addr, kind_of: String, default: '127.0.0.1:8500'
 
 # The Consul ACL token
-attribute :consul_acl, kind_of: String, default: nil
+attribute :token, kind_of: String, default: nil
 
 # The full URI to the key
 #
@@ -37,7 +37,7 @@ attribute :consul_acl, kind_of: String, default: nil
 def uri
   key_path = path
   key_path = path[1..-1] if path.start_with?('/')
-  key_path = key_path + '?token=' + consul_acl unless consul_acl.nil?
+  key_path = key_path + '?token=' + token unless token.nil?
   URI("http://#{consul_addr}/v1/kv/#{key_path}")
 end
 
