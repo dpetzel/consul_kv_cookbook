@@ -9,7 +9,7 @@ env:
 install:
   - curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -P chefdk
   - chef exec bundle install
-  - chef exec bundle exec berks install
+  - chef exec berks install
 script:
   - chef exec bundle exec rubocop .
   - chef exec bundle exec foodcritic -G .
