@@ -1,0 +1,43 @@
+DEPENDENCIES
+  consul_kv
+    path: .
+    metadata: true
+  consul_kv_test
+    path: test/cookbooks/consul_kv_test
+  minitest-handler (~> 1.5.0)
+
+GRAPH
+  apt (2.9.2)
+  chef_handler (1.4.0)
+  chocolatey (1.0.1)
+    windows (~> 1.38)
+  consul (0.11.1)
+    chef-provisioning (>= 0.0.0)
+    chocolatey (>= 0.0.0)
+    golang (~> 1.4)
+    libarchive (>= 0.6.0)
+    packagecloud (>= 0.0.0)
+    runit (>= 0.0.0)
+    windows (>= 0.0.0)
+    yum-repoforge (>= 0.0.0)
+  consul_kv (1.0.1)
+  consul_kv_test (0.1.0)
+    consul (~> 0.11.0)
+    consul_kv (>= 0.0.0)
+  golang (1.7.0)
+  libarchive (0.6.1)
+    apt (~> 2.5)
+    yum-epel (~> 0.6)
+  minitest-handler (1.5.0)
+    chef_handler (>= 0.0.0)
+  packagecloud (0.2.4)
+  runit (1.7.8)
+    packagecloud (>= 0.0.0)
+  windows (1.44.1)
+    chef_handler (>= 0.0.0)
+  yum (3.11.0)
+  yum-epel (0.7.0)
+    yum (>= 3.6.3)
+  yum-repoforge (0.7.0)
+    yum (~> 3.2)
+    yum-epel (>= 0.0.0)
