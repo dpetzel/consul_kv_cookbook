@@ -17,6 +17,18 @@ require_relative '../../spec_helper'
 describe 'consul_kv_test::default' do
   let(:chef_run) { ChefSpec::ServerRunner.converge(described_recipe) }
 
+  before do
+    stub_command('test -L /usr/local/bin/consul').and_return(true)
+    stub_command('test -L /var/lib/consul/ui').and_return(true)
+
+    allow(::File).to receive(:stat).and_call_original
+    ['/etc/consul.d', '/var/lib/consul'].each do |stat_file|
+      allow(::File).to receive(:stat).with(stat_file).and_return(
+        ::File.stat(Tempfile.new(''))
+      )
+    end
+  end
+
   it 'creates the test1 kv' do
     expect(chef_run).to create_consul_kv('test1')
   end

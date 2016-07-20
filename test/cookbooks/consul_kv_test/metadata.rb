@@ -6,5 +6,5 @@ description 'Installs/Configures consul_kv'
 long_description 'Installs/Configures consul_kv'
 version '0.1.0'
 
-depends 'consul'
+depends 'consul', '~> 0.11.0'
 depends 'consul_kv'
