@@ -24,7 +24,11 @@ action :create do
     tries = 3
     begin
       http = Net::HTTP.new(new_resource.uri.hostname, new_resource.uri.port)
-      path = new_resource.token.nil? ? new_resource.uri.path : new_resource.uri.path + '?token=' + new_resource.token
+      path = if new_resource.token.nil?
+               new_resource.uri.path
+             else
+               new_resource.uri.path + '?token=' + new_resource.token
+             end
       request = Net::HTTP::Put.new(path)
       request.body = new_resource.value
       response = http.request(request)
@@ -50,7 +54,11 @@ action :delete do
       "#{new_resource.path}:#{new_resource.value}")
     tries = 3
     begin
-      path = new_resource.token.nil? ? new_resource.uri.path : new_resource.uri.path + '?token=' + new_resource.token
+      path = if new_resource.token.nil?
+               new_resource.uri.path
+             else
+               new_resource.uri.path + '?token=' + new_resource.token
+             end
       request = Net::HTTP::Delete.new(path)
       response = @http.request(request)
       new_resource.updated_by_last_action(response.class == Net::HTTPOK)
